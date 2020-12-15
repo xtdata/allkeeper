@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+# -*- coding: utf8 -*-
+
+import requests
+from bs4 import BeautifulSoup
+
+# 配置ip地址，格式为
+ips = ["x.x.x.x", "x.x.x.x", "x.x.x.x", "x.x.x.x"]
+for ip in ips:
+    url = 'http://' + ip + ':25000/sessions'
+    try:
+        print("对该节点：" + ip + " 操作")
+        html = requests.get(url)
+        oup = BeautifulSoup(html.text, "html.parser")
+    except:
+        print("访问" + url + "异常，清理程序退出")
+        exit(1)
+    c_tr = oup.findAll("table")[0].findAll("tr")
+    # 将查询的结果，添加到数组中
+    # 考虑后面程序的扩展性，将每个字段都获取下来
+    detail_list = []  # 放需要清理session_id
+    for i in range(len(c_tr)):
+        if len(c_tr[i].findAll("td")):
+            # 判断session是否显示为已经过期
+            if 'true' in str(c_tr[i].findAll("td")[11]):
+                detail_list.append(c_tr[i].findAll("td")[14])  # 清理的程序
+    if len(detail_list) == 0:  # 如果清理程序全部都为
+        print("该节点:" + ip + "不存在待被清理的session")
+        continue
+    for session_id in detail_list:
+        close_session = str(session_id).replace('<td><small><a href="', '').replace('">Close</a></small></td>', '')
+        close_url = 'http://' + ip + ':25000' + close_session
+        print("清理session:" + close_session.split("=")[1])
+        result = requests.get(close_url)
+    c_trl = oup.findAll("table")[0].findAll("tr")  # 重新查询页面对应清理标签
+    if len(c_trl) != 0:
+        print("执行清理异常，请排查" + ip + "impala25000端口页面")
+        continue
+    print("该节点" + ip + "总共清理" + str(len(detail_list)) + "个sesson")
+print("清理成功")
