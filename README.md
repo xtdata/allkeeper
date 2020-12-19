@@ -2,7 +2,9 @@
 
 ## 简介
 
-`all` `keepeer` 所有的管理员；
+`all` `keepeer` 
+
+寓意所有的管理员；
 
 包括但不限于大数据相关组件所有的管理 主要实现对各个组件的运维和监控；
 
@@ -10,15 +12,15 @@
 
 本文档中的操作主要使用`prometheus`+`grafana`实现，后续可能会更新其他老牌监控；
 
-## 项目结构
+## 目录结构
 
 ```
 /
 ├── README.md            项目介绍
 ├── md-format-mac        对非空目录自动覆盖生成README.md文件并索引当前文件和目录，自动跳过空目录
 ├── 监控相关              监控生态系统 与 监控指标 相关文档
-│   ├── 监控指标
-│   └── prometheus生态
+│   ├── 监控指标
+│   └── prometheus生态
 └── 运维相关              组件运维的相关文档，运维程序、安装部署等
     ├── hbase
     ├── spark
@@ -28,7 +30,22 @@
     └── presto
 ```
 
-## pr提交流程
+## 目录导航
+
+- [监控相关](./监控相关/README.md)  
+  - [监控指标](./监控相关/README.md)  
+  - [prometheus生态](./prometheus生态/README.md)  
+- [运维相关](./运维相关/README.md)  
+  - [hadoop](./运维相关/hadoop/README.md)  
+  - [zookeeper](./运维相关/zookeeper/README.md)  
+  - [spark](./运维相关/spark/README.md)  
+  - [hbase](./运维相关/hbase/README.md)  
+  - [hive](./运维相关/hive/README.md)  
+  - [presto](./运维相关/presto/README.md)  
+
+
+
+## 其他
 
 1. fork项目并在自己的项目中进行clone；
 2. 添加原项目的remote地址 `git remote add origin git@github.com:xtdata/allkeeper.git`；
