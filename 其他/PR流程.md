@@ -1,5 +1,9 @@
 # PR流程和注意事项
 
+[返回首页](../README.md)
+
+---
+
 ## PR是什么
 
 `P` `R` 是 `Pull Request` 的首字母缩写。是一种协作方式，常在软件开发中出现。
@@ -98,7 +102,7 @@ git add . ; git commit -m 'add the document infrastructure framework'; git push 
 
 然后在自己的github页面上点击向上游分支发起 `pull request`
 
-
+![](_v_images/20201219185334620_24040.png)
 
 等待其他人review，此时中间会有问题出现，提交者需要自己去解决。解决后没问题review通过会自动进行代码合并。此时行业黑话叫 `merge`。
 
@@ -109,3 +113,7 @@ git add . ; git commit -m 'add the document infrastructure framework'; git push 
 - 一次pr内容，尽可能只做一件事，不要一次提交大量修改。这样自己也不容易出错，review的人也不容易出错。
 - main 和 develop 分支不能直接提交代码，只能通过合并的方式来提交代码；
 - 文件名中不能有空格；
+
+---
+
+[返回首页](../README.md)
